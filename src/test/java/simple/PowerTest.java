@@ -3,17 +3,26 @@ package simple;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
-import testing.multiply;
+import testing.Multiplication;
 
 public class PowerTest {
 
 	@Test
 	public void test() {
-		multiply mult = new multiply();
+		Multiplication mult = new Multiplication();
 		int a = 3;
 		int b = 12;
-		assertEquals(mult.mult(a, b), a*b);
+		assertEquals(mult.multiply(a, b), a*b);
+	}
+	
+	@Test
+	public void testWithMockito(){
+		int a = 4;
+		int b = 17;
+		Multiplication mult = Mockito.mock(Multiplication.class);
+		Mockito.when(mult.multiply(a, b)).thenReturn(a*b);
 	}
 
 }
